@@ -1,0 +1,104 @@
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class FirestoreDataDisplay extends StatefulWidget {
+  @override
+  _FirestoreDataDisplayState createState() => _FirestoreDataDisplayState();
+}
+
+class _FirestoreDataDisplayState extends State<FirestoreDataDisplay> {
+  final CollectionReference _collectionRef =
+      FirebaseFirestore.instance.collection('customers');
+
+  late List<Map<String, dynamic>> allData = [];
+  late List<Map<String, dynamic>> filteredData = [];
+
+  TextEditingController searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    String? userId = FirebaseAuth.instance.currentUser?.uid;
+    print(userId);
+
+    if (userId != null) {
+      QuerySnapshot querySnapshot = await _collectionRef
+          .where('UserId', isEqualTo: userId)
+          .get();
+
+      setState(() {
+        allData = querySnapshot.docs
+            .map((doc) {
+            Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+            print('UserId: ${data['UserId']}'); // Print UserId field
+            return data;
+          })
+          .toList();
+        filteredData = List.from(allData);
+      });
+    }
+  }
+
+  void filterData(String query) {
+    setState(() {
+      filteredData = allData.where((data) {
+        String name = data['firstname'].toString().toLowerCase();
+        String postcode = data['postcode'].toString().toLowerCase();
+        return name.contains(query.toLowerCase()) ||
+            postcode.contains(query.toLowerCase());
+      }).toList();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Firestore Data Display'),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: searchController,
+              decoration: InputDecoration(
+                labelText: 'Search by Name or Postcode',
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                filterData(value);
+              },
+            ),
+          ),
+          Expanded(
+            child: (filteredData.isEmpty)
+                ? Center(child: Text('No matching data found'))
+                : ListView.builder(
+                    itemCount: filteredData.length,
+                    itemBuilder: (context, index) {
+                      Map<String, dynamic> data = filteredData[index];
+                      return ListTile(
+                        title: Text(data['firstname'].toString()),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(data['postcode'].toString()),
+                            Text(data['date'].toString()),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+}

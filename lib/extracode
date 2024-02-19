@@ -1,0 +1,158 @@
+showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return StatefulBuilder(
+                              builder:
+                                  (BuildContext context, StateSetter setState) {
+                                return AlertDialog(
+                                  title: Text('Location Appliance (1)'),
+                                  content: Container(
+                                      width: double.maxFinite,
+                                      child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text('Location: '),
+                                                DropdownButton<String>(
+                                                  value: locValue,
+                                                  icon: const Icon(Icons
+                                                      .expand_more_rounded),
+                                                  items: <String>[
+                                                    'Kitchen',
+                                                    'Living Room',
+                                                    'Dining Room',
+                                                    'Bedroom',
+                                                    'Hallway',
+                                                    'Outbuilding',
+                                                    'Cupboard',
+                                                    'Loft'
+                                                  ].map((String locvalue) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: locvalue,
+                                                      child: Text(
+                                                        locvalue,
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.black),
+                                                      ),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged:
+                                                      (String? newLocValue) {
+                                                    setState(() {
+                                                      locValue = newLocValue!;
+                                                      locOneController.text =
+                                                          newLocValue;
+                                                    });
+                                                  },
+                                                )
+                                              ],
+                                            ),
+                                            TextFormField(
+                                              controller: TypeController,
+                                              decoration: InputDecoration(
+                                                  labelText: "Type"),
+                                            ),
+                                            TextFormField(
+                                              controller:
+                                                  ManafacturerController,
+                                              decoration: InputDecoration(
+                                                  labelText: "Manafacturer"),
+                                            ),
+                                            TextFormField(
+                                              controller: ModelController,
+                                              decoration: InputDecoration(
+                                                  labelText: "Model"),
+                                            ),
+                                            CheckboxListTile(
+                                              title: Text("Owned by Landlord"),
+                                              value: isOwnedOne,
+                                              onChanged: (newValue) {
+                                                setState(() {
+                                                  isOwnedOne =
+                                                      newValue ?? false;
+                                                  OwnedByController.text =
+                                                      isOwnedOne ? "Yes" : "No";
+                                                });
+                                              },
+                                              activeColor: Colors.greenAccent,
+                                              checkColor: Colors.white,
+                                            ),
+                                            CheckboxListTile(
+                                              title:
+                                                  Text("Appliance Inspected"),
+                                              value: isInspectOne,
+                                              onChanged: (newValue) {
+                                                setState(() {
+                                                  isInspectOne =
+                                                      newValue ?? false;
+                                                  ApplianceInspectController
+                                                          .text =
+                                                      isInspectOne
+                                                          ? "Yes"
+                                                          : "No";
+                                                });
+                                              },
+                                              activeColor: Colors.greenAccent,
+                                              checkColor: Colors.white,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text('Flue Type: '),
+                                                DropdownButton<String>(
+                                                    value: flueValue,
+                                                    icon: const Icon(Icons
+                                                        .expand_more_rounded),
+                                                    items: <String>[
+                                                      'RS',
+                                                      'FL',
+                                                      'BF',
+                                                      'OF',
+                                                      'CF'
+                                                    ].map((String flueValue) {
+                                                      return DropdownMenuItem<
+                                                              String>(
+                                                          value: flueValue,
+                                                          child: Text(
+                                                            flueValue,
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                          ));
+                                                    }).toList(),
+                                                    onChanged:
+                                                        (String? newFlueValue) {
+                                                      setState(() {
+                                                        flueValue =
+                                                            newFlueValue!;
+                                                        FlueTypeController
+                                                                .text =
+                                                            newFlueValue;
+                                                      });
+                                                    })
+                                              ],
+                                            ),
+                                          ])),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        print('Saved');
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Save'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        print('Cancelled');
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('cancel'),
+                                    )
+                                  ],
+                                );
+                              },
+                            );

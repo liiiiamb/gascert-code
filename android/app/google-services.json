@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "124555509647",
+    "project_id": "gascert-9766d",
+    "storage_bucket": "gascert-9766d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124555509647:android:e5472f819c89d5e3d655fa",
+        "android_client_info": {
+          "package_name": "com.example.gascert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124555509647-m5aaknla1khq5r24min3614ompksp60u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEVIgESeWoaYud_PP26qTX163Q0OlWDMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124555509647-m5aaknla1khq5r24min3614ompksp60u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

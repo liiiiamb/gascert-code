@@ -1,0 +1,31 @@
+To-do:
+- currently using test MyHomePage file to test database use, currently having issue where each record entered is stored against a different ID, look at youtube videos for sqlite DBs that store and retrieve data and test. 
+- once all data is inserted, you can submit which saves all data (NEED TO RENAME BOTTOM BUTTON TO SUBMIT), this data can be turned into a PDF through clicking a button, this turns it into a saveable PDF. All records stored in database against the postcode must be stored for each postcode, when a user searches in the past records area, they can search for a postcode which brings up all records and dates that the record was created. 
+- Add in rest of buttons - add only one more appliance details box
+- Change dialog box to pages - have a page for appliance details that is opened whenever appliance details box is clicked, a page for inspection details, etc. 
+- For inspection details have seperate text fields - assign one for postcode to store and search data. 
+- Save user input in text file  
+- Test opening text file 
+- Add in settings 
+  - Account settings - allow user to upload logo/business info that is automatically added
+- Create and develop past reports system - figure out way to save PDFs and retrieve/update
+- Add in way to automatically create invoices based off information already saved - after PDF creation
+- Use this for postcode matching when searching = https://stackoverflow.com/questions/5265244/mysql-query-to-match-uk-postcodes-regardless-of-the-number-of-spaces
+
+Appliance details: 
+- Have as dropdown option - click appliance details button, show seperate screen that has appliance details 1-5, click on each appliance details button, enter appliance details, exit dialog box, save all details to PDF.
+
+
+Storing and retrieving info: 
+- Store all input from checkboxes, text fields, etc. in a txt file - allow user to see this 
+- Store all text files against a postcode, when user goes onto retrieve past PDF have search bar at top
+- User can enter postcode that brings up the text file, the user should have the option to create new gas safety report with same information 
+
+
+For storing data:
+- Use SQL Lite - https://docs.flutter.dev/cookbook/persistence/sqlite
+- Define model of DB - InspectionAddress, InspectionAddress_postcode, Agent_LandlordAddress, Appliance_1_Location, etc. Inspection_1_OperatePress
+- Create table including all data, every field that needs to be filled 
+- Insert new information into data 
+- To find data use search postcode in DB
+
