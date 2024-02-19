@@ -1,4 +1,4 @@
-# gascert
+# GasCert
 
 This flutter application aims to simplify the data entry process for Gas Safety certificates. 
 
