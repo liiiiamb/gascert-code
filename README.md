@@ -1,16 +1,8 @@
 # gascert
 
-A new Flutter project.
+This flutter application aims to simplify the data entry process for Gas Safety certificates. 
 
-## Getting Started
+The application uses numerous packages to achieve the intended goal, including flutter_pdfview to create and view PDF files that contain user entered data, image_picker to allow for the custom entry of user company
+logos, and cloud_firestore to enable the application to store and access data using the Firestore cloud database. 
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The application contains pages to allow for data entry which include sub-pages for each section of the Gas Safety certificate, and a page to view previous reports created by a user, which includes a search feature to filter reports, any report can be clicked on in this page to view the data contained within the report or to turn the report into a PDF file which can be shared externally or printed. 
