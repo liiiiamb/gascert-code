@@ -10,3 +10,9 @@ The application contains pages to allow for data entry which include sub-pages f
 ## Example Images:
 ![New Project](https://github.com/liiiiamb/gascert-code/assets/82280429/aa6f9690-327f-4a43-a872-c076d868ffec)
 
+## Future Work: 
+- **Currently** - working on adding in more data stored within the Firebase collection to the created PDF file, and using the pdf package to reposition elements within the file. 
+- Implement a way to allow users to create a future report that includes previous report data.
+- Allow users to backup all data externally to cloud-based services such as Google Drive or Dropbox - currently users are only able to backup locally.
+- Implement an invoice creation feature after a report has been created.
+- Implement further settings of the application including language changing and notification usage. 
