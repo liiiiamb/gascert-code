@@ -89,7 +89,7 @@ class HomePageScreen extends StatelessWidget {
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Please enter engineer details to continue"),
+                    Text("Sign up to continue"),
                     SizedBox(
                         height: 20), // Adding space between text and button
                     Center(
