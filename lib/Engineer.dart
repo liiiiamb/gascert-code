@@ -132,26 +132,26 @@ class _EngineerState extends State<Engineer> {
                             hintText: 'Enter your name',
                           ),
                           controller: nameController,
-                          onChanged: (value) {
-                            if (value.isNotEmpty) {
-                              _debounce(() {
-                                setState(() {
-                                  nameController.text = value;
-                                  isEngineerSet = true;
-                                });
-                              });
-                            }
-                            // String name = nameController.text;
-                            // SharedPreferences.getInstance().then((prefs) {
-                            //   prefs.setString('Name', name).then((value) {
-                            //     setState(() {
-                            //       isEngineerSet = true;
-                            //       prefs.setBool('isEngineerSet', isEngineerSet);
-                            //       // Update other state variables or UI if needed
-                            //     });
-                            //   });
-                            // });
-                          },
+                          // onChanged: (value) {
+                          //   if (value.isNotEmpty) {
+                          //     _debounce(() {
+                          //       setState(() {
+                          //         nameController.text = value;
+                          //         isEngineerSet = true;
+                          //       });
+                          //     });
+                          //   }
+                          // String name = nameController.text;
+                          // SharedPreferences.getInstance().then((prefs) {
+                          //   prefs.setString('Name', name).then((value) {
+                          //     setState(() {
+                          //       isEngineerSet = true;
+                          //       prefs.setBool('isEngineerSet', isEngineerSet);
+                          //       // Update other state variables or UI if needed
+                          //     });
+                          //   });
+                          // });
+                          //},
                         ),
                       ),
                     ],

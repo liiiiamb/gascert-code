@@ -14,12 +14,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
+import 'package:flutter/material.dart';
+
 import 'package:pdf/widgets.dart' as pdfWid;
 import 'package:excel/excel.dart' as excel;
 import 'dart:io';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
 import 'package:printing/printing.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 import 'SignUpScreen.dart';
