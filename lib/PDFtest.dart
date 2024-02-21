@@ -165,8 +165,11 @@ class DocumentPage extends StatelessWidget {
 
     // Only update logoImage if isLogoSet is true and imagePath is not empty
     if (isLogoSet && imagePath.isNotEmpty) {
-      imageData = (await File(imagePath).readAsBytes()) as ByteData;
-      logoImage = pw.MemoryImage(imageData.buffer.asUint8List());
+      File imageFile = File(imagePath);
+      if (imageFile.existsSync()) {
+        imageData = (await imageFile.readAsBytes()) as ByteData;
+        logoImage = pw.MemoryImage(imageData.buffer.asUint8List());
+      }
     }
 
     pdf.addPage(

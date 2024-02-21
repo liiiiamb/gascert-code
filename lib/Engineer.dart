@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gascert/Settings.dart';
+import 'package:gascert/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -29,7 +30,7 @@ class _EngineerState extends State<Engineer> {
   var companyController = TextEditingController();
   var emailController = TextEditingController();
   var signatureController = SignatureController();
-  bool isEngineerSet = false;
+  bool isEngineerSet = false; //bool val is set as false initially.
   bool isLogoSet = false;
   String imagePath = '';
 
@@ -132,6 +133,14 @@ class _EngineerState extends State<Engineer> {
                             hintText: 'Enter your name',
                           ),
                           controller: nameController,
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              setState(() {
+                                nameController.text = value;
+                                isEngineerSet = true;
+                              });
+                            }
+                          },
                           // onChanged: (value) {
                           //   if (value.isNotEmpty) {
                           //     _debounce(() {
@@ -174,6 +183,13 @@ class _EngineerState extends State<Engineer> {
                             hintText: 'Enter your address',
                           ),
                           controller: addressController,
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              setState(() {
+                                addressController.text = value;
+                              });
+                            }
+                          },
                         ),
                       ),
                     ],
@@ -196,6 +212,13 @@ class _EngineerState extends State<Engineer> {
                             hintText: 'Enter your postcode',
                           ),
                           controller: postcodeController,
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              setState(() {
+                                postcodeController.text = value;
+                              });
+                            }
+                          },
                         ),
                       ),
                     ],
@@ -218,6 +241,13 @@ class _EngineerState extends State<Engineer> {
                             hintText: 'Enter your telephone number',
                           ),
                           controller: telephoneController,
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              setState(() {
+                                telephoneController.text = value;
+                              });
+                            }
+                          },
                         ),
                       ),
                     ],
@@ -240,6 +270,13 @@ class _EngineerState extends State<Engineer> {
                             hintText: 'Enter email address',
                           ),
                           controller: emailController,
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              setState(() {
+                                emailController.text = value;
+                              });
+                            }
+                          },
                         ),
                       ),
                     ],
@@ -262,6 +299,13 @@ class _EngineerState extends State<Engineer> {
                             hintText: 'Enter your company name',
                           ),
                           controller: companyController,
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              setState(() {
+                                companyController.text = value;
+                              });
+                            }
+                          },
                         ),
                       ),
                     ],
@@ -284,6 +328,13 @@ class _EngineerState extends State<Engineer> {
                             hintText: 'Enter your gas safety number',
                           ),
                           controller: gasController,
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              setState(() {
+                                gasController.text = value;
+                              });
+                            }
+                          },
                         ),
                       ),
                     ],
@@ -439,7 +490,7 @@ class _EngineerState extends State<Engineer> {
                         Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (context) => SettingsPage()),
+                              builder: (context) => HomePageScreen()),
                         );
                       },
                       style: ButtonStyle(
