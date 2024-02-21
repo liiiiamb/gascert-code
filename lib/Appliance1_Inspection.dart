@@ -13,7 +13,6 @@ import 'package:gascert/Appliance1_Details.dart';
 import 'package:gascert/CreateReport.dart';
 import 'package:gascert/PostReportOptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:gascert/TestDisplayData.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -32,9 +31,7 @@ import 'dart:io';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:printing/printing.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
-import 'SignUpScreen.dart';
-import 'SignInScreen.dart';
-import 'ForgPasswordScreen.dart';
+
 import 'main.dart';
 import 'TestingScreen.dart';
 import 'package:permission_handler/permission_handler.dart';

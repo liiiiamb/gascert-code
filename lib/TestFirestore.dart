@@ -16,7 +16,6 @@ import 'package:printing/printing.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 import 'package:permission_handler/permission_handler.dart';
 import 'main.dart';
-import 'TestDisplayData.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -89,11 +88,6 @@ class TestFirestore extends StatelessWidget {
                     "Date": formattedDate
                   });
                 }
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TestDisplayData()),
-                );
               },
               child: Text('Save'),
             ),
