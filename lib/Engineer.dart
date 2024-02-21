@@ -136,7 +136,6 @@ class _EngineerState extends State<Engineer> {
                           onChanged: (value) {
                             if (value.isNotEmpty) {
                               setState(() {
-                                nameController.text = value;
                                 isEngineerSet = true;
                               });
                             }
@@ -186,7 +185,7 @@ class _EngineerState extends State<Engineer> {
                           onChanged: (value) {
                             if (value.isNotEmpty) {
                               setState(() {
-                                addressController.text = value;
+                                isEngineerSet = true;
                               });
                             }
                           },
@@ -215,7 +214,7 @@ class _EngineerState extends State<Engineer> {
                           onChanged: (value) {
                             if (value.isNotEmpty) {
                               setState(() {
-                                postcodeController.text = value;
+                                isEngineerSet = true;
                               });
                             }
                           },
@@ -244,7 +243,7 @@ class _EngineerState extends State<Engineer> {
                           onChanged: (value) {
                             if (value.isNotEmpty) {
                               setState(() {
-                                telephoneController.text = value;
+                                isEngineerSet = true;
                               });
                             }
                           },
@@ -273,7 +272,7 @@ class _EngineerState extends State<Engineer> {
                           onChanged: (value) {
                             if (value.isNotEmpty) {
                               setState(() {
-                                emailController.text = value;
+                                isEngineerSet = true;
                               });
                             }
                           },
@@ -302,7 +301,7 @@ class _EngineerState extends State<Engineer> {
                           onChanged: (value) {
                             if (value.isNotEmpty) {
                               setState(() {
-                                companyController.text = value;
+                                isEngineerSet = true;
                               });
                             }
                           },
@@ -331,7 +330,7 @@ class _EngineerState extends State<Engineer> {
                           onChanged: (value) {
                             if (value.isNotEmpty) {
                               setState(() {
-                                gasController.text = value;
+                                isEngineerSet = true;
                               });
                             }
                           },

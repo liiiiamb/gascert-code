@@ -161,14 +161,14 @@ class DocumentPage extends StatelessWidget {
     bool isLogoSet = prefs.getBool('isLogoSet') ?? false;
 
     ByteData imageData = await rootBundle.load('assets/defaultlogo.jpg');
-    pw.MemoryImage logoImage = pw.MemoryImage(Uint8List.view(imageData.buffer));
+    pw.MemoryImage logoImage = pw.MemoryImage(imageData.buffer.asUint8List());
 
     // Only update logoImage if isLogoSet is true and imagePath is not empty
     if (isLogoSet && imagePath.isNotEmpty) {
       File imageFile = File(imagePath);
       if (imageFile.existsSync()) {
-        imageData = (await imageFile.readAsBytes()) as ByteData;
-        logoImage = pw.MemoryImage(imageData.buffer.asUint8List());
+        Uint8List bytes = await imageFile.readAsBytes();
+        logoImage = pw.MemoryImage(bytes);
       }
     }
 
