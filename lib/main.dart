@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gascert/Engineer.dart';
-import 'package:gascert/TestDisplayUser.dart';
+import 'package:gascert/PrevReport.dart';
 import 'package:gascert/TestFirestore.dart';
 import 'package:gascert/Settings.dart';
 import 'package:gascert/CreateReport.dart';
@@ -80,11 +80,16 @@ class HomePageScreen extends StatelessWidget {
                 false, //this line makes it so the outside of the dialog box cannot be pressed.
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text("Enter Engineer Details"),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                //title: Text("Enter Engineer Details"),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Sign up to continue"),
+                    Text("Sign up to continue",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold)),
                     SizedBox(
                         height: 20), // Adding space between text and button
                     Center(
@@ -97,9 +102,21 @@ class HomePageScreen extends StatelessWidget {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.green, // Change button color to green
+                          primary: Colors.green,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            side: BorderSide(
+                                color: Colors.green, width: 1), // Add border
+                          ),
                         ),
-                        child: Text("Continue"),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          child: Text(
+                            "Continue",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
                       ),
                     ),
                   ],
