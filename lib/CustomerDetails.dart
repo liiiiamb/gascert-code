@@ -55,7 +55,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
   var lNameController = TextEditingController();
   var postController = TextEditingController();
   var addressController = TextEditingController();
-
+  var telController = TextEditingController();
   var cityController = TextEditingController();
   var locOneController = TextEditingController();
   var locOneController_2 = TextEditingController();
@@ -281,6 +281,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
     String? post = prefs.getString('post');
     String? address = prefs.getString('address');
     String? town = prefs.getString('town');
+    String? telephone = prefs.getString('telephone');
     if (firstName != null) {
       setState(() {
         fNameController.text = firstName;
@@ -289,6 +290,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
         postController.text = post!;
         addressController.text = address!;
         cityController.text = town!;
+        telController.text = telephone!;
       });
     }
     // if (title != null) {
@@ -423,15 +425,18 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                   hintText: 'Enter first name',
                 ),
                 controller: fNameController,
-                onChanged: (value) {
-                  if (value.isNotEmpty) {
-                    _debounce(() {
-                      setState(() {
-                        fNameController.text = value;
-                      });
-                    });
-                  }
-                },
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]+'))
+                ],
+                // onChanged: (value) {
+                //   if (value.isNotEmpty) {
+                //     _debounce(() {
+                //       setState(() {
+                //         fNameController.text = value;
+                //       });
+                //     });
+                //   }
+                // },
               ),
             ),
             SizedBox(height: 10),
@@ -445,6 +450,9 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                   hintText: 'Enter last name',
                 ),
                 controller: lNameController,
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]+'))
+                ],
               ),
             ),
             SizedBox(height: 10),
@@ -484,9 +492,30 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                   hintText: 'Enter town/city',
                 ),
                 controller: cityController,
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]+'))
+                ],
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 10),
+            Container(
+              width: 300.0,
+              height: 70.0,
+              padding: EdgeInsets.only(left: 90.0),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  icon: Icon(Icons.phone),
+                  hintText: 'Enter telephone number',
+                ),
+                controller: telController,
+                keyboardType: TextInputType.numberWithOptions(),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]+')),
+                  LengthLimitingTextInputFormatter(11)
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
             Center(
               child: OutlinedButton(
                 onPressed: () async {
@@ -496,6 +525,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                   String post = postController.text;
                   String address = addressController.text;
                   String town = cityController.text;
+                  String telephone = telController.text;
 
                   if (title.isEmpty) {
                     title = "-";
@@ -515,6 +545,9 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                   if (town.isEmpty) {
                     town = "-";
                   }
+                  if (telephone.isEmpty) {
+                    telephone = "-";
+                  }
 
                   SharedPreferences prefs =
                       await SharedPreferences.getInstance();
@@ -524,6 +557,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                   prefs.setString('post', post);
                   prefs.setString('address', address);
                   prefs.setString('town', town);
+                  prefs.setString('telephone', telephone);
 
                   Navigator.push(
                     context,

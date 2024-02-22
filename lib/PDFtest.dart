@@ -148,11 +148,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class DocumentPage extends StatelessWidget {
   late pw.Font interFont;
+  // late pw.Font oswaldFont;
 
   Future<pw.Document> generateDocument() async {
     interFont = await pw.Font.ttf(
       await rootBundle.load('fonts/RobotoSlab-VariableFont_wght.ttf'),
     );
+    // oswaldFont = await pw.Font.ttf(
+    //     await rootBundle.load('fonts/Oswald-VariableFont_wght.ttf'));
     final pdf = pw.Document();
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -179,31 +182,75 @@ class DocumentPage extends StatelessWidget {
             children: [
               pw.Center(
                 child: pw.Text(
-                  'GAS SAFETY REPORT',
-                  style: pw.TextStyle(
-                      fontSize: 33,
-                      fontWeight: pw.FontWeight.bold,
-                      font: interFont),
-                ),
-              ),
-              pw.Positioned(
-                left: 10,
-                top: 110,
-                child: pw.Text(
                   'Engineer Name: $engineerName',
                   style: pw.TextStyle(fontSize: 18),
                 ),
               ),
-              if (isLogoSet)
-                pw.Positioned(
-                  top: 20,
-                  right: 20,
-                  child: pw.Container(
-                    width: 100,
-                    height: 100,
-                    child: pw.Image(logoImage),
+              pw.Row(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Expanded(
+                    flex: 3,
+                    child: pw.Padding(
+                      padding: pw.EdgeInsets.only(left: 50, top: 20),
+                      child: pw.Text(
+                        'GAS SAFETY RECORD',
+                        style: pw.TextStyle(
+                          fontSize: 23,
+                          fontWeight: pw.FontWeight.bold,
+                          // font: oswaldFont,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (isLogoSet)
+                    pw.Expanded(
+                      flex: 1,
+                      child: pw.Container(
+                        width: 65,
+                        height: 65,
+                        child: pw.Image(logoImage),
+                      ),
+                    ),
+                ],
+              ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                bottom: 650,
+                child: pw.Container(
+                  height: 1,
+                  color: PdfColors.black,
+                ),
+              ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                top: 100,
+                bottom: 600,
+                child: pw.Text(
+                  'Engineer Details',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    fontWeight: pw.FontWeight.bold,
+                    // font: oswaldFont,
                   ),
                 ),
+              ),
+              pw.Positioned(
+                left: 370,
+                right: 0,
+                top: 100,
+                bottom: 600,
+                child: pw.Text(
+                  'Customer Details',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    fontWeight: pw.FontWeight.bold,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
             ],
           );
         },

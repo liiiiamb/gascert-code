@@ -136,6 +136,9 @@ flutter:
     - family: Inter
       fonts:
         - asset: fonts/Inter-VariableFont_slnt,wght.ttf
+    - family: Oswald
+      fonts:
+        - asset: fonts/Oswald-VariableFont_wght.ttf
     
   #   - family: Trajan Pro
   #     fonts:

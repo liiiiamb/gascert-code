@@ -83,11 +83,11 @@ class HomePageScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
-                //title: Text("Enter Engineer Details"),
+                title: Text("Welcome to GasCert"),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Sign up to continue",
+                    Text("Please sign up to continue",
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold)),
                     SizedBox(
