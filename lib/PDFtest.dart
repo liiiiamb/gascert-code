@@ -1,301 +1,3 @@
-// import 'dart:io';
-
-// import 'package:excel/excel.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:pdf/pdf.dart';
-// import 'package:pdf/widgets.dart' as pw;
-// import 'package:printing/printing.dart';
-// import 'package:pdf/widgets.dart' show Font, GoogleFonts;
-
-// import 'package:shared_preferences/shared_preferences.dart';
-
-// class DocumentPage extends StatelessWidget {
-//   late pw.Font interFont;
-
-//   Future<pw.Document> generateDocument() async {
-//     interFont = await Font.ttf(
-//       await rootBundle.load('fonts/RobotoSlab-VariableFont_wght.ttf'),
-//     );
-//     final pdf = pw.Document();
-
-//     //add more sharedprefs here
-//     SharedPreferences prefs = await SharedPreferences.getInstance();
-//     String firstName = prefs.getString('firstName') ?? '';
-//     String imagePath = prefs.getString('ImagePath') ?? '';
-//     String engineerName = prefs.getString('Name') ?? '';
-//     String engineerAdd = prefs.getString('address') ?? '';
-//     String engineerPost = prefs.getString('postcode') ?? '';
-//     String engineerTele = prefs.getString('telephone') ?? '';
-//     String engineerTrade = prefs.getString('trading') ?? '';
-//     String engineerGas = prefs.getString('gas') ?? '';
-//     String userId = prefs.getString('userID') ?? '';
-//     String engineerCompany = prefs.getString('company') ?? '';
-//     bool isLogoSet = prefs.getBool('isLogoSet') ?? false;
-//     final PdfPageFormat format = PdfPageFormat(792, 612, marginAll: 0);
-
-//     ByteData imageData = await rootBundle.load('assets/defaultlogo.jpg');
-//     pw.MemoryImage logoImage = pw.MemoryImage(Uint8List.view(imageData.buffer));
-
-//     // Only update logoImage if isLogoSet is true and imagePath is not empty
-//     if (isLogoSet && imagePath.isNotEmpty) {
-//       imageData = (await File(imagePath).readAsBytes()) as ByteData;
-//       logoImage = pw.MemoryImage(imageData as Uint8List);
-//     }
-
-//     pdf.addPage(
-//       pw.Page(
-//         pageFormat: format,
-//         build: (pw.Context context) {
-//           return pw.Stack(
-//             children: [
-//               // Centered GAS SAFETY REPORT text
-//               pw.Positioned(
-//                 left: 240,
-//                 top: 40,
-//                 child: pw.Text(
-//                   'GAS SAFETY REPORT',
-//                   style: pw.TextStyle(
-//                       fontSize: 33,
-//                       fontWeight: pw.FontWeight.bold,
-//                       font: interFont),
-//                 ),
-//               ),
-
-//               // Positioned First Name text
-//               pw.Positioned(
-//                 left: 10,
-//                 top: 110,
-//                 child: pw.Text(
-//                   'Engineer Name: $engineerName',
-//                   style: pw.TextStyle(fontSize: 18),
-//                 ),
-//               ),
-
-//               pw.Positioned(
-//                 left: 10,
-//                 top: 130,
-//                 child: pw.Text(
-//                   'UserID: $userId',
-//                   style: pw.TextStyle(fontSize: 18),
-//                 ),
-//               ),
-
-//               // Positioned logo or default image
-//               if (isLogoSet)
-//                 pw.Positioned(
-//                   top: 20,
-//                   right: 20,
-//                   child: pw.Container(
-//                     width: 100, // Adjust width and height as needed
-//                     height: 100,
-//                     child: pw.Image(
-//                       pw.MemoryImage(
-//                         File(imagePath).readAsBytesSync(),
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//               if (!isLogoSet)
-//                 pw.Positioned(
-//                   top: 20,
-//                   right: 20,
-//                   child: pw.Container(
-//                     width: 100, // Adjust width and height as needed
-//                     height: 100,
-//                     child: pw.Image(logoImage), // Display default logo image
-//                   ),
-//                 ),
-//             ],
-//           );
-//         },
-//       ),
-//     );
-
-//     return pdf;
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Document')),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () async {
-//             final pdf = await generateDocument();
-
-//             // Display the generated PDF document
-//             Printing.layoutPdf(
-//               onLayout: (PdfPageFormat format) async => pdf.save(),
-//             );
-//           },
-//           child: Text('Generate Document'),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// void main() => runApp(MaterialApp(home: DocumentPage()));
-
-// import 'dart:io';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:pdf/pdf.dart';
-// import 'package:pdf/widgets.dart' as pw;
-// import 'package:printing/printing.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-
-// class DocumentPage extends StatelessWidget {
-//   late pw.Font interFont;
-//   // late pw.Font oswaldFont;
-
-//   Future<pw.Document> generateDocument() async {
-//     interFont = await pw.Font.ttf(
-//       await rootBundle.load('fonts/RobotoSlab-VariableFont_wght.ttf'),
-//     );
-//     // oswaldFont = await pw.Font.ttf(
-//     //     await rootBundle.load('fonts/Oswald-VariableFont_wght.ttf'));
-//     final pdf = pw.Document();
-
-//     SharedPreferences prefs = await SharedPreferences.getInstance();
-//     String engineerName = prefs.getString('Name') ?? '';
-//     String imagePath = prefs.getString('ImagePath') ?? '';
-//     bool isLogoSet = prefs.getBool('isLogoSet') ?? false;
-
-//     ByteData imageData = await rootBundle.load('assets/defaultlogo.jpg');
-//     pw.MemoryImage logoImage = pw.MemoryImage(imageData.buffer.asUint8List());
-
-//     // Only update logoImage if isLogoSet is true and imagePath is not empty
-//     if (isLogoSet && imagePath.isNotEmpty) {
-//       File imageFile = File(imagePath);
-//       if (imageFile.existsSync()) {
-//         Uint8List bytes = await imageFile.readAsBytes();
-//         logoImage = pw.MemoryImage(bytes);
-//       }
-//     }
-
-//     pdf.addPage(
-//       pw.Page(
-//         build: (pw.Context context) {
-//           return pw.Stack(
-//             children: [
-//               // pw.Center(
-//               //   child: pw.Text(
-//               //     'Engineer Name: $engineerName',
-//               //     style: pw.TextStyle(fontSize: 18),
-//               //   ),
-//               // ),
-//               pw.Row(
-//                 crossAxisAlignment: pw.CrossAxisAlignment.start,
-//                 children: [
-//                   pw.Expanded(
-//                     flex: 3,
-//                     child: pw.Padding(
-//                       padding: pw.EdgeInsets.only(left: 50, top: 20),
-//                       child: pw.Text(
-//                         'GAS SAFETY RECORD',
-//                         style: pw.TextStyle(
-//                           fontSize: 23,
-//                           fontWeight: pw.FontWeight.bold,
-//                           // font: oswaldFont,
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                   if (isLogoSet)
-//                     pw.Expanded(
-//                       flex: 1,
-//                       child: pw.Container(
-//                         width: 65,
-//                         height: 65,
-//                         child: pw.Image(logoImage),
-//                       ),
-//                     ),
-//                 ],
-//               ),
-//               pw.Positioned(
-//                 left: 0,
-//                 right: 0,
-//                 bottom: 650,
-//                 child: pw.Container(
-//                   height: 1,
-//                   color: PdfColors.black,
-//                 ),
-//               ),
-//               pw.Positioned(
-//                 left: 0,
-//                 right: 0,
-//                 top: 100,
-//                 bottom: 600,
-//                 child: pw.Text(
-//                   'Engineer Details',
-//                   style: pw.TextStyle(
-//                     fontSize: 13,
-//                     fontWeight: pw.FontWeight.bold,
-//                     // font: oswaldFont,
-//                   ),
-//                 ),
-//               ),
-//               pw.Positioned(
-//                 left: 0,
-//                 right: 0,
-//                 top: 130,
-//                 bottom: 600,
-//                 child: pw.Text(
-//                   '$engineerName',
-//                   style: pw.TextStyle(
-//                     fontSize: 13,
-//                     // font: oswaldFont,
-//                   ),
-//                 ),
-//               ),
-//               pw.Positioned(
-//                 left: 370,
-//                 right: 0,
-//                 top: 100,
-//                 bottom: 600,
-//                 child: pw.Text(
-//                   'Customer Details',
-//                   style: pw.TextStyle(
-//                     fontSize: 13,
-//                     fontWeight: pw.FontWeight.bold,
-//                     // font: oswaldFont,
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           );
-//         },
-//       ),
-//     );
-
-//     return pdf;
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Document')),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () async {
-//             final pdf = await generateDocument();
-
-//             // Display the generated PDF document
-//             Printing.layoutPdf(
-//               onLayout: (PdfPageFormat format) async => pdf.save(),
-//             );
-//           },
-//           child: Text('Generate Document'),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// void main() => runApp(MaterialApp(home: DocumentPage()));
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -304,24 +6,17 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DocumentPage extends StatefulWidget {
-  @override
-  _DocumentPageState createState() => _DocumentPageState();
-}
-
-class _DocumentPageState extends State<DocumentPage> {
+class DocumentPage extends StatelessWidget {
   late pw.Font interFont;
+  // late pw.Font oswaldFont;
 
-  @override
-  void initState() {
-    super.initState();
-    generateAndShowDocument();
-  }
-
-  Future<void> generateAndShowDocument() async {
+  Future<pw.Document> generateDocument() async {
     interFont = await pw.Font.ttf(
       await rootBundle.load('fonts/RobotoSlab-VariableFont_wght.ttf'),
     );
+    // oswaldFont = await pw.Font.ttf(
+    //     await rootBundle.load('fonts/Oswald-VariableFont_wght.ttf'));
+    final pdf = pw.Document();
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String engineerName = prefs.getString('Name') ?? '';
@@ -331,6 +26,7 @@ class _DocumentPageState extends State<DocumentPage> {
     ByteData imageData = await rootBundle.load('assets/defaultlogo.jpg');
     pw.MemoryImage logoImage = pw.MemoryImage(imageData.buffer.asUint8List());
 
+    // Only update logoImage if isLogoSet is true and imagePath is not empty
     if (isLogoSet && imagePath.isNotEmpty) {
       File imageFile = File(imagePath);
       if (imageFile.existsSync()) {
@@ -339,40 +35,36 @@ class _DocumentPageState extends State<DocumentPage> {
       }
     }
 
-    final pdf = pw.Document();
-
     pdf.addPage(
       pw.Page(
         build: (pw.Context context) {
           return pw.Stack(
             children: [
-              pw.Row(
-                crossAxisAlignment: pw.CrossAxisAlignment.start,
-                children: [
-                  pw.Expanded(
-                    flex: 3,
-                    child: pw.Padding(
-                      padding: pw.EdgeInsets.only(left: 50, top: 20),
-                      child: pw.Text(
-                        'GAS SAFETY RECORD',
-                        style: pw.TextStyle(
-                          fontSize: 23,
-                          fontWeight: pw.FontWeight.bold,
-                        ),
-                      ),
-                    ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                top: 10,
+                child: pw.Text(
+                  'GAS SAFETY RECORD',
+                  style: pw.TextStyle(
+                    fontSize: 23,
+                    fontWeight: pw.FontWeight.bold,
+                    // font: oswaldFont,
                   ),
-                  if (isLogoSet)
-                    pw.Expanded(
-                      flex: 1,
-                      child: pw.Container(
-                        width: 65,
-                        height: 65,
-                        child: pw.Image(logoImage),
-                      ),
-                    ),
-                ],
+                ),
               ),
+              if (isLogoSet)
+                pw.Positioned(
+                  left: 400,
+                  right: 0,
+                  bottom: 660,
+                  child: pw.Container(
+                    width: 65,
+                    height: 65,
+                    child: pw.Image(logoImage),
+                  ),
+                ),
               pw.Positioned(
                 left: 0,
                 right: 0,
@@ -429,10 +121,7 @@ class _DocumentPageState extends State<DocumentPage> {
       ),
     );
 
-    // Display the generated PDF document
-    Printing.layoutPdf(
-      onLayout: (PdfPageFormat format) async => pdf.save(),
-    );
+    return pdf;
   }
 
   @override
@@ -440,7 +129,17 @@ class _DocumentPageState extends State<DocumentPage> {
     return Scaffold(
       appBar: AppBar(title: Text('Document')),
       body: Center(
-        child: CircularProgressIndicator(),
+        child: ElevatedButton(
+          onPressed: () async {
+            final pdf = await generateDocument();
+
+            // Display the generated PDF document
+            Printing.layoutPdf(
+              onLayout: (PdfPageFormat format) async => pdf.save(),
+            );
+          },
+          child: Text('Generate Document'),
+        ),
       ),
     );
   }
