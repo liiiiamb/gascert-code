@@ -20,6 +20,13 @@ class DocumentPage extends StatelessWidget {
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String engineerName = prefs.getString('Name') ?? '';
+    String engineerAdd = prefs.getString('Address') ?? '';
+    String engineerPost = prefs.getString('Postcode') ?? '';
+    String engineerTele = prefs.getString('Telephone') ?? '';
+    String engineerTrade = prefs.getString('Trading') ?? '';
+    String engineerGas = prefs.getString('Gas') ?? '';
+    String engineerEmail = prefs.getString('Email') ?? '';
+    String engineerCompany = prefs.getString('Company') ?? '';
     String imagePath = prefs.getString('ImagePath') ?? '';
     bool isLogoSet = prefs.getBool('isLogoSet') ?? false;
 
@@ -95,6 +102,84 @@ class DocumentPage extends StatelessWidget {
                 bottom: 600,
                 child: pw.Text(
                   '$engineerName',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                top: 150,
+                bottom: 570,
+                child: pw.Text(
+                  '$engineerAdd',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                top: 170,
+                bottom: 550,
+                child: pw.Text(
+                  '$engineerPost',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                top: 190,
+                bottom: 530,
+                child: pw.Text(
+                  '$engineerTele',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                top: 220,
+                bottom: 510,
+                child: pw.Text(
+                  '$engineerTrade',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                top: 250,
+                bottom: 480,
+                child: pw.Text(
+                  '$engineerGas',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                top: 280,
+                bottom: 450,
+                child: pw.Text(
+                  '$engineerCompany',
                   style: pw.TextStyle(
                     fontSize: 13,
                     // font: oswaldFont,
