@@ -549,8 +549,11 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                     telephone = "-";
                   }
 
+                  String fullName = title + " " + fName + " " + lName;
+
                   SharedPreferences prefs =
                       await SharedPreferences.getInstance();
+                  prefs.setString('fullName', fullName);
                   prefs.setString('title', title);
                   prefs.setString('firstName', fName);
                   prefs.setString('lastName', lName);

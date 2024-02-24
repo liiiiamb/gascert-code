@@ -29,6 +29,11 @@ class DocumentPage extends StatelessWidget {
     String engineerCompany = prefs.getString('Company') ?? '';
     String imagePath = prefs.getString('ImagePath') ?? '';
     bool isLogoSet = prefs.getBool('isLogoSet') ?? false;
+    String customerName = prefs.getString('fullName') ?? '';
+    String customerAdd = prefs.getString('address') ?? '';
+    String customerPost = prefs.getString('post') ?? '';
+    String customerTown = prefs.getString('town') ?? '';
+    String customerTele = prefs.getString('telephone') ?? '';
 
     ByteData imageData = await rootBundle.load('assets/defaultlogo.jpg');
     pw.MemoryImage logoImage = pw.MemoryImage(imageData.buffer.asUint8List());
@@ -196,6 +201,71 @@ class DocumentPage extends StatelessWidget {
                   style: pw.TextStyle(
                     fontSize: 13,
                     fontWeight: pw.FontWeight.bold,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 370,
+                right: 0,
+                top: 120,
+                bottom: 580,
+                child: pw.Text(
+                  '$customerName',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 370,
+                right: 0,
+                top: 140,
+                bottom: 560,
+                child: pw.Text(
+                  '$customerAdd',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 370,
+                right: 0,
+                top: 180,
+                bottom: 520,
+                child: pw.Text(
+                  '$customerPost',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 370,
+                right: 0,
+                top: 200,
+                bottom: 500,
+                child: pw.Text(
+                  '$customerTown',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 370,
+                right: 0,
+                top: 220,
+                bottom: 480,
+                child: pw.Text(
+                  '$customerTele',
+                  style: pw.TextStyle(
+                    fontSize: 13,
                     // font: oswaldFont,
                   ),
                 ),
