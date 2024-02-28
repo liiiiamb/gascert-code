@@ -36,6 +36,7 @@ class DocumentPage extends StatelessWidget {
     String customerTele = prefs.getString('telephone') ?? '';
 
     ByteData imageData = await rootBundle.load('assets/defaultlogo.jpg');
+    pw.MemoryImage defaultImg = pw.MemoryImage(imageData.buffer.asUint8List());
     pw.MemoryImage logoImage = pw.MemoryImage(imageData.buffer.asUint8List());
 
     // Only update logoImage if isLogoSet is true and imagePath is not empty
@@ -75,6 +76,17 @@ class DocumentPage extends StatelessWidget {
                     width: 65,
                     height: 65,
                     child: pw.Image(logoImage),
+                  ),
+                ),
+              if (!isLogoSet)
+                pw.Positioned(
+                  left: 400,
+                  right: 0,
+                  bottom: 660,
+                  child: pw.Container(
+                    width: 65,
+                    height: 65,
+                    child: pw.Image(defaultImg),
                   ),
                 ),
               pw.Positioned(
@@ -179,12 +191,12 @@ class DocumentPage extends StatelessWidget {
                 ),
               ),
               pw.Positioned(
-                left: 300, // Adjust this position as needed
-                top: 100, // Match the top of other elements
-                bottom: 500, // Match the bottom of other elements
+                left: 350,
+                top: 100,
+                bottom: 500,
                 child: pw.Container(
-                  width: 2, // Thickness of the divider
-                  color: PdfColors.black, // Or any color you prefer
+                  width: 2,
+                  color: PdfColors.black,
                 ),
               ),
               pw.Positioned(
