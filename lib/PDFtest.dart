@@ -90,7 +90,7 @@ class DocumentPage extends StatelessWidget {
                 left: 0,
                 right: 0,
                 top: 100,
-                bottom: 600,
+                bottom: 630,
                 child: pw.Text(
                   'Engineer Details',
                   style: pw.TextStyle(
@@ -106,7 +106,7 @@ class DocumentPage extends StatelessWidget {
                 top: 130,
                 bottom: 600,
                 child: pw.Text(
-                  '$engineerName',
+                  'Name: $engineerName',
                   style: pw.TextStyle(
                     fontSize: 13,
                     // font: oswaldFont,
@@ -119,7 +119,7 @@ class DocumentPage extends StatelessWidget {
                 top: 150,
                 bottom: 570,
                 child: pw.Text(
-                  '$engineerAdd',
+                  'Address: $engineerAdd',
                   style: pw.TextStyle(
                     fontSize: 13,
                     // font: oswaldFont,
@@ -132,7 +132,7 @@ class DocumentPage extends StatelessWidget {
                 top: 170,
                 bottom: 550,
                 child: pw.Text(
-                  '$engineerPost',
+                  'Postcode: $engineerPost',
                   style: pw.TextStyle(
                     fontSize: 13,
                     // font: oswaldFont,
@@ -145,33 +145,7 @@ class DocumentPage extends StatelessWidget {
                 top: 190,
                 bottom: 530,
                 child: pw.Text(
-                  '$engineerTele',
-                  style: pw.TextStyle(
-                    fontSize: 13,
-                    // font: oswaldFont,
-                  ),
-                ),
-              ),
-              // pw.Positioned(
-              //   left: 0,
-              //   right: 0,
-              //   top: 220,
-              //   bottom: 510,
-              //   child: pw.Text(
-              //     '$engineerTrade',
-              //     style: pw.TextStyle(
-              //       fontSize: 13,
-              //       // font: oswaldFont,
-              //     ),
-              //   ),
-              // ),
-              pw.Positioned(
-                left: 0,
-                right: 0,
-                top: 250,
-                bottom: 480,
-                child: pw.Text(
-                  '$engineerGas',
+                  'Telephone: $engineerTele',
                   style: pw.TextStyle(
                     fontSize: 13,
                     // font: oswaldFont,
@@ -179,16 +153,38 @@ class DocumentPage extends StatelessWidget {
                 ),
               ),
               pw.Positioned(
-                left: 0,
+                left: 150,
                 right: 0,
-                top: 280,
-                bottom: 450,
+                top: 140,
+                bottom: 600,
                 child: pw.Text(
-                  '$engineerCompany',
+                  'Gas Safety No:$engineerGas',
                   style: pw.TextStyle(
                     fontSize: 13,
                     // font: oswaldFont,
                   ),
+                ),
+              ),
+              pw.Positioned(
+                left: 150,
+                right: 0,
+                top: 190,
+                bottom: 550,
+                child: pw.Text(
+                  'Company: $engineerCompany',
+                  style: pw.TextStyle(
+                    fontSize: 13,
+                    // font: oswaldFont,
+                  ),
+                ),
+              ),
+              pw.Positioned(
+                left: 300, // Adjust this position as needed
+                top: 100, // Match the top of other elements
+                bottom: 500, // Match the bottom of other elements
+                child: pw.Container(
+                  width: 2, // Thickness of the divider
+                  color: PdfColors.black, // Or any color you prefer
                 ),
               ),
               pw.Positioned(
@@ -273,7 +269,7 @@ class DocumentPage extends StatelessWidget {
               pw.Positioned(
                 left: 0,
                 right: 0,
-                bottom: 430,
+                bottom: 480,
                 child: pw.Container(
                   height: 1,
                   color: PdfColors.black,
@@ -282,14 +278,14 @@ class DocumentPage extends StatelessWidget {
               pw.Positioned(
                   left: 150,
                   right: 0,
-                  bottom: 400,
+                  bottom: 455,
                   child: pw.Text('APPLIANCE DETAILS (1)',
                       style: pw.TextStyle(
                           fontSize: 15, fontWeight: pw.FontWeight.bold))),
               pw.Positioned(
                 left: 0,
                 right: 0,
-                bottom: 390,
+                bottom: 440,
                 child: pw.Container(
                   height: 1,
                   color: PdfColors.black,

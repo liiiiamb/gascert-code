@@ -160,7 +160,7 @@ class HomePageScreen extends StatelessWidget {
                     backgroundColor: twoCol,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(30),
                       side: const BorderSide(
                         color: Colors.black,
                         width: 2.0,
@@ -197,7 +197,7 @@ class HomePageScreen extends StatelessWidget {
                     backgroundColor: twoCol,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(30),
                       side: const BorderSide(
                         color: Colors.black,
                         width: 2.0,
@@ -239,7 +239,7 @@ class HomePageScreen extends StatelessWidget {
                     backgroundColor: twoCol,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(30),
                       side: const BorderSide(
                         color: Colors.black,
                         width: 2.0,
