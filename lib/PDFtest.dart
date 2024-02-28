@@ -23,7 +23,7 @@ class DocumentPage extends StatelessWidget {
     String engineerAdd = prefs.getString('Address') ?? '';
     String engineerPost = prefs.getString('Postcode') ?? '';
     String engineerTele = prefs.getString('Telephone') ?? '';
-    String engineerTrade = prefs.getString('Trading') ?? '';
+    // String engineerTrade = prefs.getString('Trading') ?? '';
     String engineerGas = prefs.getString('Gas') ?? '';
     String engineerEmail = prefs.getString('Email') ?? '';
     String engineerCompany = prefs.getString('Company') ?? '';
@@ -152,19 +152,19 @@ class DocumentPage extends StatelessWidget {
                   ),
                 ),
               ),
-              pw.Positioned(
-                left: 0,
-                right: 0,
-                top: 220,
-                bottom: 510,
-                child: pw.Text(
-                  '$engineerTrade',
-                  style: pw.TextStyle(
-                    fontSize: 13,
-                    // font: oswaldFont,
-                  ),
-                ),
-              ),
+              // pw.Positioned(
+              //   left: 0,
+              //   right: 0,
+              //   top: 220,
+              //   bottom: 510,
+              //   child: pw.Text(
+              //     '$engineerTrade',
+              //     style: pw.TextStyle(
+              //       fontSize: 13,
+              //       // font: oswaldFont,
+              //     ),
+              //   ),
+              // ),
               pw.Positioned(
                 left: 0,
                 right: 0,
@@ -268,6 +268,31 @@ class DocumentPage extends StatelessWidget {
                     fontSize: 13,
                     // font: oswaldFont,
                   ),
+                ),
+              ),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                bottom: 430,
+                child: pw.Container(
+                  height: 1,
+                  color: PdfColors.black,
+                ),
+              ),
+              pw.Positioned(
+                  left: 150,
+                  right: 0,
+                  bottom: 400,
+                  child: pw.Text('APPLIANCE DETAILS (1)',
+                      style: pw.TextStyle(
+                          fontSize: 15, fontWeight: pw.FontWeight.bold))),
+              pw.Positioned(
+                left: 0,
+                right: 0,
+                bottom: 390,
+                child: pw.Container(
+                  height: 1,
+                  color: PdfColors.black,
                 ),
               ),
             ],
